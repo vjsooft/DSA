@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./external.js"></script>
+</head>
+<body>
+    <h1>Let var and const</h1>
+
+    <h1>Data type</h1>
+
+    <h1>Datatype conversion</h1>
+    <h1>Opreaters</h1>
+
+    <h1>compare value</h1>
+    <h1>String Method</h1>
+    <h1>closures</h1>
+    <!-- <script>
+        function f1(a){
+            
+            return function f2(b){
+                return a+b ;
+            }
+        }
+        var sum = f1(10);     //if function is call then value is not lost it's retain
+        sum(20)
+        console.log( sum(20))
+    </script> -->
+
+    <h1>Lexical scoping</h1>
+
+    <!-- <script>
+        function f1(a){
+            
+            return function f2(b){
+                return a+b ;
+            }
+        }
+        var sum = f1(10);     //if function is call then value is not lost it's retain
+        sum(20)
+        console.log( sum(20))
+    </script> -->
+   <h1>JavaScript Object Constructors</h1>
+
+   <script>
+    //  var Student ={
+    //     name:"vikas",
+    //     age:23,
+    //     schoolclass:15
+    //  }
+
+    // let myString = JSON.stringify(Student);
+    // function Student (name, age, schoolclass){
+    //     this.name = name,
+    //     this.age = age,
+    //     this.schoolclass = schoolclass
+    // }
+
+    // let student1 = new Student("vikas", 15, 5)
+    // student1.color = "red"
+    // let student2 = new Student("neha", 25, 15)
+    // console.log("============>", student1);
+    // console.log("============>", myString);
+   </script>
+
+    <h1>Loops in Javascript </h1>
+    <!-- <div id="demo"></div>
+    <div id="demo2"></div> -->
+    <script>
+        // const cars = ["BMW", "Volvo", "Saab", "Ford", "Fiat", "Audi"];
+        // for ( let i = 0; i < cars.length; i++){
+        //     console.log(cars[i])
+        // }
+        // for(let i = 50; i > 4; i= i-5){
+        //     console.log(i)
+        // }
+        // let date = "";
+        // // let week = ""
+        // for(let d = 1; d <= 31; d++){
+        //     console.log(d);
+        //     date += "Jan" + d + "<br>"
+        // }
+        // // console.log(date);
+        // document.getElementById("demo").innerHTML = date;
+        // document.getElementById("demo2").innerHTML = week;
+    </script>
+
+<h1>String Methos Javascript </h1>
+
+<script>
+//  let stringData = "vikas jain";
+//  let get = stringData.charCodeAt(2)
+//  console.log("check length", get);
+
+// Q 1 :- Write a JavaScript function to calculate the sum of two numbers.
+function sum(a, b){
+    return a+b
+}
+sum(2,5)
+// console.log(sum(2,5));
+
+// Q 2:- Write a JavaScript program to find the maximum number in an array. 
+
+let num = [1,8,9,5,7,2,6,5,8,3,5,4,8]
+// Solution One :- 
+// function maxNum (num){
+//     return Math.max(...num)
+// }
+// let getNewNum = maxNum(num)
+
+// Solution two :- 
+// let getNewNum = num.sort()
+// console.log("======>", getNewNum.slice(-1));
+
+// Solution Three :-
+function findMinAndMax(arr) {
+  let min = arr[0];
+  let max = arr[0];
+
+  for (let i = 1; i < arr.length; i++) {
+    if (arr[i] < min) {
+      min = arr[i];
+    }
+    if (arr[i] > max) {
+      max = arr[i];
+    }
+  }
+
+  return { min, max };
+}
+
+// Example usage:
+// const array = [3, 5, 7, 2, 8, -1, 4, 10, 12];
+const result = findMinAndMax(num);
+// console.log("=======>", result)
+
+// // console.log(  '5' -5 );
+
+// var array2 = [1, 5, 6, 8, 11, 10, 20, 15];
+// //[1, 5, 6, 8, 0, 2, 4, 11, 10, 20, 15] 
+
+// console.log("check arr", array2);
+// let g= array2.splice(4,0,0,2,4)
+// console.log(array2);
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            text-align: center;
+        }
+        #displayData {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            width: 100%;
+            padding: 0;
+            margin: 0;
+            flex-wrap: wrap;
+        }
+        #displayData>li {
+            flex-basis: 24%;
+            border: 1px solid #ccc;
+            list-style: none;
+        }
+        .img-res {
+            width: 175px;
+            margin: 0 auto;
+            display: block;
+        }
+        .d-flex{
+            display: flex;
+        }
+        .group-box {
+            padding: 10px;
+            align-content: center;
+            justify-content: space-between;
+            font-size: 15px;
+        }
+        p.item-discr {
+            padding: 0 15px;
+        }
+        #showMoreData {
+            padding: 15px 50px;
+            background: #000;
+            color: #fff;
+            font-size: 15px;
+            font-weight: bold;
+            border: 1px solid #000;
+            text-align: center;
+            margin: 15px auto;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <ul id="displayData">
+    </ul>
+    <button id="showMoreData">Lode More</button>
+    <script>
+        /*
+            ---------------Callback----------------------------
+            function msg() {
+                console.log('Calculation data');
+            }
+
+            function msgHi() {
+                console.log('Hi');
+            }
+
+            function sum(a, b, msgCallback){
+                console.log(a+b);
+                msgCallback();
+            }
+            sum(5,6, msg)
+            sum(5,6, msgHi)
+            */
+
+            // ---------------Callback Hell----------------------------
+            /*
+
+            function getData(userId, getData2){
+                setTimeout(()=>{
+                    console.log(`"--- Get User Id--- ", ${userId}`);
+                    if(getData2){
+                        getData2()
+                    }
+                }, 2000)
+            }
+            getData(123, ()=>{
+                getData(33, ()=>{
+                    getData(55)
+                });
+            });
+            */
+
+            /*
+            -----------------Create Promise -----------------
+              function getData() {
+                return new Promise((resolve, reject)=>{
+                    setTimeout(()=>{
+                        resolve('Success');
+                        console.log("check data");
+                    }, 3000)
+                })
+            }
+            console.log("=======>", getData());
+            */
+
+           
+           
+           //   fetch data using promis
+           
+           //   let getData = fetch(apiPath).then((res, rej)=>{
+            //         return res.json()
+            //   })
+            //   getData.then((res)=>{
+                //       console.log('====getData===>', res.products);
+                //   }).catch((error)=>{
+                    //     console.log(error);
+                    // })
+                    
+                    
+        // fetch data using await
+        let apiPath = 'https://dummyjson.com/products';
+        const storeData = []
+        let currentIndex = 0;
+        const chunkSize = 8;
+        const incrementChunkSize = 4;
+        let listLiData = ''
+        const moreBtn =  document.getElementById('showMoreData').addEventListener('click', getData);
+      
+        async function getData(){
+            try{
+                let response = await fetch(apiPath)
+                if (response.status == 200 ) {
+                    let data = await response.json();
+                    let finalData = await data.products
+                    storeData.push(...finalData) 
+                    displayData(chunkSize)
+                }
+            }catch(error){
+                console.log(error);
+            }
+        }
+        getData()
+        function displayData(incrementChunkSize){
+            const slicedData = storeData.slice(currentIndex, currentIndex + chunkSize);
+            console.log("===>", slicedData);
+            slicedData.forEach((item) => {
+            listLiData+= `
+            <li>
+                <img class="img-res" src=${item.thumbnail} alt="product image" title="product image"/>
+                <div class="d-flex group-box">
+                    <span class="item-tit">${item.title}</span>
+                    <span class="item-tit">${item.price}</span>
+                </div>
+                <p class="item-discr">${item.description.slice(0, 50)}...</p>
+            </li>
+            `
+        });
+        currentIndex += chunkSize; 
+        document.getElementById("displayData").innerHTML = listLiData;
+        }
+       
+    </script>
+</body>
+</html>

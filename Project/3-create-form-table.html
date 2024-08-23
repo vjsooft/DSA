@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .nav-bar {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            background-color: #313131;
+            padding: 10px;
+        }
+        ul.nav.nav-bar>li {
+            list-style: none;
+            padding-right: 15px;
+        }
+        ul.nav.nav-bar>li>a{
+            text-decoration: none;
+            color: #ccc;
+        }
+        #checkMode {
+            position: absolute;
+            top: 7px;
+            right: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            padding: 2px 6px;
+            border-radius: 5px;
+            border: none;
+        }
+        .table {
+            border: 1px solid #ccc;
+            width: 100%;
+        }
+        .tlb-tBody {
+            background: #ccc;
+        }
+        button.btn-add {
+            background: red;
+            font-size: 15px;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            float: right;
+            margin: 5px;
+            cursor: pointer;
+        }
+      
+        .modal-poup {
+            position: absolute;
+            background: #fff;
+            width: 350px;
+            z-index: 2;
+            margin: 0 auto;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 0 25px;
+            border-radius: 5px;
+            border: 1px solid pink;
+            display: none;
+        }
+        .overflow{
+            background: rgb(0 0 0 / 17%);
+            position: fixed;
+            top:0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- <h1>The Document Object Model (DOM) is a programming interface for web documents. 
+        It represents the page so that programs can change the document structure, style, and content. 
+        The DOM represents the document as a nodes and objects. that way, programming languages can interact with the page.
+        </h1> -->
+        <!-- getHedAccess.textContent -- show all hidden text
+        'DOM Manipulatio    button' -->
+        <!-- getHedAccess.innerText -- show only real text which are visible on brawser
+        'DOM Manipulatio' -->
+        <!-- getHedAccess.innerHTML  -- show text with hidden html tag
+        'DOM Manipulatio    <span style="display: none;">button</span>' -->
+    <!-- <h1 id="heading" class="data-color">DOM Manipulatio    <span style="display: none;">button</span></h1>
+    <p class="data-color">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Hic, 
+        sunt vel quos sint dignissimos a eius ratione reprehenderit nihil officia, 
+        eveniet inventore quaerat libero itaque, 
+        eos nesciunt voluptatibus! Consequuntur, eveniet?
+
+
+        <ul class="parrent">
+            <li class="item">monday</li>
+            <li class="item">tuesday</li>
+            <li class="item">wednesday</li>
+        </ul>
+    </p> -->
+    
+    <!-- <script>
+        const list = document.querySelector('.parrent');
+        console.log(list.firstElementChild);
+        console.log(list.firstElementChild.nextElementSibling);
+        console.log(list.lastElementChild);
+    </script> -->
+    <div>
+
+
+        <div id="modal" class="modal-poup">
+      
+       
+            <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <form id="sampleForm">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text", id="name" name="name" placeholder="Enter name" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email", id="email" name="email" placeholder="Enter email id" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Phone No</label>
+                            <input type="number", id="number" name="number" placeholder="Enter number" class="form-control">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="submit" class="btn btn-success">Submit</button>
+                    </div>
+                </form>
+                </div>
+              </div>
+        </div>
+        <div class="overflow"></div>
+    </div>
+    <script>
+        const div = document.createElement('div');
+        div.className = 'main';
+        div.id = 'root';
+
+        // Insurt Btn
+        const modeBtn = document.createElement('button')
+        modeBtn.className ="btn";
+        modeBtn.id= 'checkMode' ;
+        modeBtn.textContent = "Dark Mode"
+        div.append(modeBtn)
+      
+        let bgColor = true;
+
+        const h1 = document.createElement('h1')
+        const mainTit = document.createTextNode('Main Title');
+              h1.appendChild(mainTit)
+              h1.style.backgroundColor = 'pink';
+              h1.style.color = '#000'
+              h1.style.padding = "10px"
+              h1.style.borderRadius = '10px'
+              h1.style.textAlign = 'center'
+        div.appendChild(h1)
+        
+
+        // Dynamic Route with listing Nav
+        const ul = document.createElement('ul')
+        ul.classList = "nav nav-bar"
+        div.prepend(ul)
+        function create(itemNo, ...itemText){
+            for (let i = 0; i < itemNo; i++) {
+                let li = document.createElement('li')
+                let aLink = document.createElement('a')
+
+                aLink.setAttribute('href', `http://127.0.0.1:5500/${itemText[i % itemText.length]}.html`)
+                li.appendChild(aLink)
+                aLink.innerHTML = itemText[i % itemText.length]
+                ul.append(li)
+            }
+        }
+        create(8, 'Home', 'About-Us', 'Blog', 'Services', 'Event', 'Jobs', 'News', 'Contact-Us' )
+
+        // Body Light and Dark Mode
+        function bodyBG(bgclr) {
+            modeBtn.addEventListener('click', (e)=>{
+                if(!bgColor){
+                    bgColor = true;
+                    document.body.style.backgroundColor = '#fff';
+                    document.getElementById('checkMode').innerText = "Dark Mode"
+                }else{
+                    bgColor = false;
+                    document.body.style.backgroundColor = '#171717'
+                    document.body.style.color = '#fff';
+                    document.getElementById('checkMode').innerText = "Light Mode"
+                }
+            });
+        }
+        bodyBG(bgColor);
+        
+         // Dynamic Table with Update Action
+         const userTable = document.createElement('table');
+               userTable.className = 'table cusTable'
+         const tBody = document.createElement('thead')
+               tBody.className = 'tlb-tBody'
+         const headerRow  = document.createElement('tr')
+
+         userTable.appendChild(tBody)
+         tBody.appendChild(headerRow)
+ 
+         const addTblBtn = document.createElement('button');
+         addTblBtn.className = 'btn btn-success'
+         addTblBtn.id="addUserList"
+         addTblBtn.innerText = 'Add'
+         div.append(addTblBtn)
+        // let useInfoList = []
+        
+        // Table start Code
+         function cusTable(rowNo, ...tblTitle){
+            for(let i = 0; i < tblTitle.length; i++){
+                let th = document.createElement('th');
+                th.innerHTML = tblTitle[i % tblTitle.length]
+                headerRow.appendChild(th)
+            }
+         }
+         cusTable(0, 'No.','Name','Email','Phone','Action')
+         
+         addTblBtn.addEventListener('click', (e)=>{
+             document.querySelector('.modal-poup').style.display = "block"
+             document.querySelector('.overflow').style.display = "block"
+         })
+
+        // Form Validation start Code
+        const userSubmitInfo = document.getElementById('sampleForm')
+        userSubmitInfo.addEventListener('submit', (event)=>{
+            event.preventDefault();
+            const formData = new FormData(userSubmitInfo)
+            let useInfoList = []
+            const formDataObj = {}
+            formData.forEach((value, key)=>{
+                formDataObj[key] = value
+            });
+            console.log("=formDataObj==>", useInfoList.unshift(formDataObj));
+           
+            userSubmitInfo.reset();
+            document.querySelector('.modal-poup').style.display = "none"
+            document.querySelector('.overflow').style.display = "none"
+            console.log("------useInfoList--------", useInfoList);
+            console.log("------useInfoList-length--------", useInfoList.length);
+        })
+         div.append(userTable);
+        document.body.appendChild(div)
+    </script>
+</body>
+</html>

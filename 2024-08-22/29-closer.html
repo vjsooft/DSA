@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let sum = function (a) {
+            let b = 10;
+            function innerSum () {
+                return a + b
+            }
+            return innerSum
+        }
+        // console.log("========>", sum(5));
+        let getData = sum(4)
+        console.log(getData());
+
+
+        // function outerFunction() {
+        //     let outerVariable = 'I am from the outer function';
+        //     function innerFunction() {
+        //         console.log(outerVariable); // Accesses the outer variable
+        //     }
+        //     return innerFunction;
+        // }
+        // // console.log("-------outerFunction----------", outerFunction());
+        // const myClosure = outerFunction();
+        // console.log("-------myClosure----------", myClosure());
+        // myClosure(); // Logs: "I am from the outer function"
+    </script>
+</body>
+
+</html>

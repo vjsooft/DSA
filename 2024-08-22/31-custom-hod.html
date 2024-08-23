@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>real array :- [1,2,3,4,5,6,7]</p>
+    <h1>Custom Map</h1>
+    <div id="map"></div>
+    <h1>Custom Reduce</h1>
+    <div id="reduce"></div>
+    <h1>Custom Filter</h1>
+    <div id="filter"></div>
+    <h1>Custom Sort</h1>
+    <div id="sort"></div>
+    <script>
+        const data = [1,2,3,4,5,6,7]
+        
+        /* Cunstom MAP   */
+        Array.prototype.customHod = function(x){
+            const resultDta = []
+            for(let i = 0; i < this.length; i++){
+                resultDta.push(x(this[i])) 
+            }
+            return resultDta
+        }
+        let getResult = data.customHod((item)=>{
+            return item*100
+        })
+        document.getElementById('map').innerHTML = getResult;
+
+        /* Cunstom Reduce       */
+        Array.prototype.customReduce = function(callback) {
+            let accumulator = 0;
+            for (let i = 0; i < this.length; i++) {
+                accumulator = callback(accumulator, this[i])
+            }
+            return accumulator;
+        };
+        let getResult2 = data.customReduce((acc, num) => acc + num);
+        document.getElementById('reduce').innerHTML = getResult2;
+
+        /* Cunstom Filter  */
+        Array.prototype.customFilter = function(callback){
+            let finalData = [];
+            for(let i=0; i < this.length; i++){
+                if(callback(this[i])){
+                    finalData.push(this[i])
+                }
+            }
+            return finalData
+        }
+        let getResult3 = data.customFilter((item)=> item > 4);
+        document.getElementById('filter').innerHTML = getResult3;
+   
+        /* Cunstom Sort  not working */
+        // Array.prototype.customSort = function(callback){
+        //     let finalData = []
+        //     console.log(callback);
+        //     for(let i=0; i < this.length; i++){
+        //         console.log("---if cond---", this[i]);
+        //         finalData = callback(this[i])
+        //     }
+        //     return finalData
+        // }
+        // let getResult4 = data.customSort((a, b)=> b-a);
+        // document.getElementById('sort').innerHTML = getResult4;
+        // console.log(getResult4);
+    </script>
+</body>
+</html>

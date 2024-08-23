@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       /*
+       ------------------Arrow fuction----------------
+       
+        sayHello();  --- Output ----  Cannot access 'sayHello' before initialization
+        const sayHello =()=> {
+            console.log("Hello");
+        }
+
+        //    ------------------Normal fuction----------------
+    
+       sayHello();  // --- Output ----  Hellos
+        function sayHello () {
+            console.log("Hello");
+        }
+        ------------------Anonimus fuction----------------
+       
+        hello(); --- Output ----  Cannot access 'sayHello' before initialization
+        const hello = function(){
+            console.log("Hello");
+        }
+       */
+
+        // using normal function
+        /*
+        function addiation(a){
+                return function(b){
+                    return function(c){
+                        return a+b+c;
+                    }
+                }
+        }
+        */
+        // using arrow function
+       /*
+        addiation = (a)=> (b)=> (c)=> a+b+c;
+        let res= addiation(2)(2)(6)
+        console.log("===>", res);
+       */
+
+        // Infinite Currying
+        function addiation(a){
+            return function(b){
+                if(b){
+                    return addiation(a+b)
+                }else{
+                    return a;
+                }
+            }
+        }
+        let res= addiation(2)(3)(9)(59)();
+        console.log("===>", res);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // const userDtl ={
+        //     fName: "Vikas",
+        //     lName:"jain",
+        // }
+        // function fullName (...userInfo){
+        //     return `${this.fName} ${this.lName} ${userInfo}`
+        // }
+        // const getData = fullName.call(userDtl);
+        
+        const user ={
+            fName:"vikas", 
+            lName:"Jain"
+        }
+        const user2 ={
+            fName:"Priyanka", 
+            lName:"Jain"
+        }
+        const user3 ={
+            fName:"Soniya", 
+            lName:"Jain"
+        }
+        let fullName = function(...info){
+            return `${this.fName} ${this.lName}`
+        }
+        const getData = fullName.call(user);
+        const getData2 = fullName.call(user2);
+        const getData3 = fullName.bind(user3);
+        console.log(getData);
+        console.log(getData2);
+
+        console.log(getData3());
+        //         // user.call(fullName)
+//         // fullName.call(user)
+//         console.log(getData);
+    </script>
+</body>
+</html>

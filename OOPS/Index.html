@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>Three differance type of method</h2>
+    <ul>
+        <li>
+            <h3>Constructor</h3>
+            <p>The constructor method is a special method of a class for creating and initializing an object instance of
+                that class.</p>
+            <h3>Why to use it</h3>
+            <p>if we are assign the property inside a class or assign the value or property then use constructor </p>
+        </li>
+        <li>
+            <h3>Prototype</h3>
+            <p>object prototype is a mechanism that allows objects to inherit properties and methods from other objects.
+                Every JavaScript object has a prototype property that references another object,
+                which is used as a template to create the inherited properties and methods.</p>
+            <p><strong>Why Use It:</strong>
+                <ul>
+                    <li>
+                        <strong>Inheritance: </strong>
+                        It allows objects to inherit features from other objects, enabling code reuse and the creation
+                        of hierarchical structures.
+                    </li>
+                    <li>
+                        <strong>Memory Efficiency: </strong>
+                        Shared methods are stored in the prototype, so multiple objects can use the same method without
+                        each object needing its own copy, saving memory.
+                    </li>
+                    <li>
+                        <strong>Dynamic Behavior: </strong>
+                        Prototypes allow you to add or change properties and methods for all instances created from the
+                        prototype, enhancing flexibility and maintainability.
+                    </li>
+                </ul>
+            </p>
+        </li>
+        <li>Static</li>
+    </ul>
+
+
+    <!-- <script>
+        class car{
+            constructor(){}
+            // Create a method just linke a  modalNo, price
+            modalNo(a) {
+                console.log("hi", a);
+            }
+            price(b) {
+                console.log("hi", b);
+            }
+        }
+        let hyundai = new car()
+        console.log(typeof car);
+        console.log(typeof hyundai);
+        console.log(hyundai.modalNo('24-variants'));
+        console.log(hyundai.price(850000));
+
+        const obj ={
+            fName:'vikas',
+            lName:'jain',
+            getFullname :function(){
+                return `${this.fName} ${this.lName}`
+            },
+            getRole :function(){
+                return `${this.rollNumber}`
+            }
+        }
+        const obj2 ={
+            rollNumber:36,
+            fName:"Priyanka",
+            __proto__ : obj
+        }
+        const obj5 = {
+            address:'Gwalior',
+            // __proto__ : obj2
+        }
+        Object.setPrototypeOf(obj5,obj2)
+
+        // Object.prototype.creacSum = function(){
+        //     return 'this is a custom prototype'
+        // }
+        // const numData = [1,5,3,6,8]
+        // const str = 'checkIt'
+        // function myLife(){
+        //     console.log('im here...');
+        // }
+        // let newCollection = obj2.prototype.obj
+        // console.log(obj2.getRole());
+        console.log(obj5);
+        // console.log(myLife.creacSum());
+    </script> -->
+
+
+    <script>
+        class Car {
+            constructor(modalNo, color, company) {
+                this.modalNo = modalNo;
+                this.color = color,
+                this.company = company
+                    // console.log(" hello inside ", company)
+            }
+        }
+
+        class Motercar extends Car {
+            constructor(modalNo, color, company, automation) {
+                super(modalNo, color, company);
+                this.automation = automation;   
+                // console.log("next to super")
+            }
+        }
+        class Patrolmotercar extends Motercar {
+            constructor(modalNo, [...arg], fule) {
+                super(modalNo, [...arg]);
+                console.log("=======super----", 'Patrolmotercar');
+            }
+        }
+        
+        const Hyundai = new Car(568, 'red', 'hyundai');
+        const Maruti = new Car(9857, 'white', 'maruti');
+        const honda = new Motercar(1040, 'yellow', 'honda', 'gairBased')
+        const vivo= new Patrolmotercar(1340, 'yellow', 'honda', 'gairBased', 'petrol')
+        
+        // const copyData = Motercar.prototype.Car
+        
+        // console.log("-------", copyData)
+        // console.log(Hyundai.modalNo);
+        // console.log(Maruti.modalNo);
+
+        // console.log(honda.automation);
+        console.log(vivo.fule);
+
+        
+        // Expected output: "Polygon"
+    </script>
+</body>
+
+</html>
