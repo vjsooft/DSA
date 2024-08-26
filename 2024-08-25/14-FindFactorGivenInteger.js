@@ -1,0 +1,1 @@
+// Q:- How to find factor of a given integer in javascript
