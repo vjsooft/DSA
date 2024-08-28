@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body class="container">
+    <div class="outer">
+      <h5>Spread Operator</h5>
+      <p>
+        The spread operator allows you to spread out elements of an iterable
+        object such as an array, map, or set.
+      </p>
+    </div>
+    <div class="outer">
+        <h5>Rest Parameters</h5>
+        <p>
+            A rest parameter allows you to represent an indefinite number of arguments as an array. 
+        </p>
+      </div>
+      <div class="outer">
+        <h5>Arrow Functions / Fat Arrow function</h5>
+        <p>
+            Concise syntax for anonymous functions with lexical scoping 
+        </p>
+        <input type="text" name="username" id="username" placeholder="Enter a username">
+        <div id="greeting"></div>
+      </div>
+      <script>
+        const greeting = document.querySelector('#greeting');
+const username = document.querySelector('#username');
+username.addEventListener('keyup',()=> {
+    let getVal = this
+    // console.log('=====>', this);
+    
+    greeting.textContent = 'Hello ' + this.value;
+  setTimeout(()=>{
+  },1000)
+});
+      </script>
+  </body>
+</html>
